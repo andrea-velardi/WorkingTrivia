@@ -7,7 +7,7 @@ var wrongCount = 0;
 var qACount = 1;
 //======================
 var timer = '';
-var qA = {
+var qA = {// all of my questions, answers and right/wrong
 			1:{
 				question:'Before the Foo Fighters, David Grohl was the lead drummer in which famous rock band?',
 				answers:['Nirvana','Pink Floyd','The Beatles','Spice Girls'],
@@ -37,7 +37,7 @@ var qA = {
 /*Functions
 ==============================================================*/
 var start = function(){
-	//When buttons is clicked clear trivSection
+	//When buttons is clicked clear the trivSection
 	$('.startBtn').on('click',function(){
 		//Emptys trivia section
 		$('.trivSection').empty();
@@ -46,7 +46,7 @@ var start = function(){
 }
 var createQuestions = function(){
 	timerStart();
-	//Get question
+	//Get the question question
 	var question = qA[qACount]['question'];
 	//assign div element to newDiv
 	var newDiv = $('<div>');
@@ -56,9 +56,9 @@ var createQuestions = function(){
 	newDiv.text(question);
 	//Add question to DOM
 	$('.trivSection').append(newDiv);
-	createAnswers();
+	generateAnswers();
 }
-var createAnswers = function(){
+var generateAnswers = function(){
 	var answerLength = qA[qACount]['answers'].length;
 	for(var i = 0; i < answerLength;i++){
 		//get answers
@@ -212,7 +212,7 @@ var timeDecrement = function(){
 	
 }
 var gameOver = function(){
-	//Remove everything in trivia section
+	//Remove everything in the trivia section
 	$('.trivSection').empty();
 	//Remove everthing in timer section
 	$('.timerSection').empty();
@@ -234,14 +234,14 @@ var gameOver = function(){
 	newBtn.addClass('redBtn resetBtn');
 	//Give btn reset Text
 	newBtn.text('Reset');
-	//Append
+	//Append the text 
 	$('.trivSection').append(newBtn);
-	//Reset all value
+	//Reset all values
 	trivTime = 100;
 	qACount = 1;
 	rightCount = 0;
 	wrongCount = 0;
-	//When reset button is clicked.......
+	//When reset button is clicked then it will start the game over
 	$('.resetBtn').on('click',function(){
 		$('.trivSection').empty()
 		//Starts game over
@@ -249,6 +249,6 @@ var gameOver = function(){
 	});
 }
 
-/*Main
-==============================================================*/
+
+
 start();
